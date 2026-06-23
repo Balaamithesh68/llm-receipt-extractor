@@ -20,3 +20,17 @@ Fine-tuned **Qwen2.5-1.5B** using **QLoRA** (4-bit `nf4` quantization) to force 
 **Model Output:**
 ```json
 {"store": "CVS", "items": [{"name": "energy drinks", "qty": 4, "unit_price": 2.80}]}
+
+
+## 🛠️ Exporting the Custom LoRA to Ollama (.gguf)
+
+Because standard `llama.cpp` compilers fail when encountering modernized HuggingFace `.safetensors` LoRAs, this repo contains a self-healing Colab export bridge: `colab_lora_exporter.py`.
+
+### Usage inside Google Colab:
+1. Finish running your `SFTTrainer` cell.
+2. Drop a new code cell at the bottom of your notebook and run:
+
+```python
+# Download the script from this repository and run it live
+!wget [https://raw.githubusercontent.com/YOUR_GITHUB_NAME/cashier-ai/main/colab_lora_exporter.py](https://raw.githubusercontent.com/YOUR_GITHUB_NAME/cashier-ai/main/colab_lora_exporter.py)
+!python colab_lora_exporter.py
